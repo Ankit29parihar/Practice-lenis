@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>iStock Scroll Effects</title>
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.8/dist/lenis.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+    }
+    section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-container {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+    }
+
+    .parallax-img {
+      position: absolute;
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transform: translateY(0);
+      transition: transform 0.1s linear;
+    }
+
+    .hero-text {
+      font-size: 4vw;
+      text-align: center;
+      max-width: 80%;
+      background: rgba(0,0,0,0.5);
+      padding: 20px 40px;
+      border-radius: 12px;
+    }
+
+    .fade-zoom {
+      opacity: 0;
+      transform: scale(1.1);
+      transition: all 1s ease-out;
+    }
+
+    .fade-zoom.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .split {
+      display: flex;
+      height: 100vh;
+    }
+
+    .split .left, .split .right {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .split .right img {
+      max-width: 100%;
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    .split .right img.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .split .left .text {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1s ease;
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+
+    .split .left .text.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: #333;
+  padding: 30px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: transform 0.4s ease, background 0.3s;
+}
+.card:hover {
+  transform: scale(1.05);
+  background: #444;
+}
+.skew-container {
+  overflow: hidden;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+.skew-img {
+  width: 100%;
+  transform: scale(1) skewY(4deg);
+  transition: all 0.7s ease-out;
+  opacity: 0;
+}
+.skew-img.visible {
+  opacity: 1;
+  transform: scale(1.1) skewY(0deg);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Hero Parallax -->
+  <section class="parallax-container">
+    <img src="https://media.istockphoto.com/id/1347455404/photo/shot-of-an-unrecognizable-woman-spending-a-day-in-the-city.jpg?s=612x612&w=0&k=20&c=W3-QMPd9D-ok_upk94ooFtb3wnWUZW4Gu8dtYRH3fKI=" class="parallax-img" />
+    <div class="hero-text fade-zoom">Scroll Into the Future</div>
+  </section>
+
+  <!-- Split Reveal Section -->
+  <section class="split">
+    <div class="left">
+      <div class="text">Experience powerful visuals with seamless scrolling like never before. Perfect for portfolios, brands, and product showcases.</div>
+    </div>
+    <div class="right">
+      <img src="https://media.istockphoto.com/id/1356851927/photo/a-teenagers-hanging-on-rooftop-and-drinking-beer.jpg?s=612x612&w=0&k=20&c=k8G6nWtITXbW8NjA2zHkNyVggRxmNvPaJxQ02ZW97ZQ=" alt="Technology Image" />
+    </div>
+  </section>
+
+  <!-- More Content -->
+  <section style="background:#111;">
+    <div class="hero-text fade-zoom">More Content Coming Soon...</div>
+  </section>
+
+  <!-- Scroll Reveal Grid Section -->
+<section style="background:#222; padding: 100px 40px; flex-direction: column;">
+  <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 50px;" class="fade-zoom">Our Latest Features</h2>
+  <div class="card-grid">
+    <div class="card fade-zoom">Speed Optimization</div>
+    <div class="card fade-zoom">Pixel Perfect Design</div>
+    <div class="card fade-zoom">SEO Friendly</div>
+    <div class="card fade-zoom">Responsive Layout</div>
+    <div class="card fade-zoom">Custom Animations</div>
+    <div class="card fade-zoom">Easy Integration</div>
+  </div>
+</section>
+
+    <section style="background: #000; padding: 100px 0;">
+  <div class="skew-container">
+    <img class="skew-img" src="https://media.istockphoto.com/id/1974844448/vector/modern-abstract-blue-pink-and-purple-gradient-circle-line-on-dark-black-background-design.jpg?s=612x612&w=0&k=20&c=cTWHagIWLjzyYploCH0NtR5LLwhDA3ivVuddLlU_xCI=" />
+  </div>
+</section>
+<section style="position: relative; background: #111; height: 200vh;">
+  <div style="position: sticky; top: 30%; text-align: center;">
+    <h2 style="font-size: 3rem; color: white;">This Text Sticks While Background Scrolls</h2>
+  </div>
+</section>
+<section style="background: #000; overflow-x: hidden; padding: 100px 0;">
+  <div style="display: flex; gap: 30px; width: 300vw; transform: translateX(0);" class="horizontal-scroll">
+    <img src="https://media.istockphoto.com/id/1202985822/photo/cinematic-portrait-of-handsome-young-man-in-neon-lighted-interior.jpg?s=612x612&w=0&k=20&c=m8_iOnceR5LcD3C6hAleh26HONyfHsaFJJMgcs0PSlo=" width="800" />
+    <img src="https://media.istockphoto.com/id/1202985822/photo/cinematic-portrait-of-handsome-young-man-in-neon-lighted-interior.jpg?s=612x612&w=0&k=20&c=m8_iOnceR5LcD3C6hAleh26HONyfHsaFJJMgcs0PSlo=" width="800" />
+    <img src="https://media.istockphoto.com/id/1202985822/photo/cinematic-portrait-of-handsome-young-man-in-neon-lighted-interior.jpg?s=612x612&w=0&k=20&c=m8_iOnceR5LcD3C6hAleh26HONyfHsaFJJMgcs0PSlo=" width="800" />
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="background:#111; padding: 40px; text-align:center;">
+  <h3 style="color:#aaa; font-weight: 400;">Built with ❤️ using Lenis Scroll</h3>
+  <p style="margin-top:10px; color:#555;">© 2025 ScrollMaster. All rights reserved.</p>
+</footer>
+
+
+  <!-- Lenis -->
+  <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+
+  <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+<script>
+  const lenis = new Lenis({ autoRaf: true });
+
+  function activateOnScroll(selector, className = "active", offset = 100) {
+    document.querySelectorAll(selector).forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - offset) {
+        el.classList.add(className);
+      }
+    });
+  }
+
+  function handleScrollAnimations() {
+    // Parallax image scroll
+    document.querySelectorAll('.parallax-img').forEach(el => {
+      const speed = 0.3;
+      el.style.transform = `translateY(${window.scrollY * speed}px)`;
+    });
+
+    // Fade zoom, split section
+    activateOnScroll(".fade-zoom");
+    activateOnScroll(".split .left .text");
+    activateOnScroll(".split .right img");
+
+    // Skew image reveal
+    document.querySelectorAll('.skew-img').forEach(img => {
+      const rect = img.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        img.classList.add('visible');
+      }
+    });
+
+    // Horizontal scroll section
+    const horizontal = document.querySelector('.horizontal-scroll');
+    if (horizontal) {
+      const offset = window.scrollY;
+      horizontal.style.transform = `translateX(-${offset * 0.3}px)`;
+    }
+  }
+
+  // Scroll listener
+  window.addEventListener('scroll', handleScrollAnimations);
+  handleScrollAnimations(); // on page load
+</script>
+
+
+</body>
+</html>
